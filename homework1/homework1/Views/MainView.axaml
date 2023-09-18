@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:homework1.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="homework1.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="3*"/>
+		</Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="输入数字，输出所有的素数因子"/>
+            <TextBox Text="{Binding Path=NeedNumber}"/>
+            <TextBlock Text="{Binding Path=AnsNumber}"/>
+        </StackPanel>
+        <GridSplitter Grid.Row="1" ResizeDirection="Rows" Background="AliceBlue" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        </GridSplitter>
+        <Grid Grid.Row="2" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="简单加减答题:" FontSize="32"/>
+            <UserControl Grid.Row="1" Content="{Binding Path=CurrentViewModel}"/>
+        </Grid>
+    </Grid>    
+</UserControl>

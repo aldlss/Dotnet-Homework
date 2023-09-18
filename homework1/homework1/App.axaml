@@ -1,0 +1,15 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:homework1="clr-namespace:homework1"
+             x:Class="homework1.App"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+	<Application.DataTemplates>
+        <homework1:ViewLocator/>
+    </Application.DataTemplates>
+
+	<Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+</Application>

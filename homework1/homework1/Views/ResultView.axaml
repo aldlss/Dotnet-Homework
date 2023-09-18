@@ -1,0 +1,16 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="homework1.Views.ResultView"
+             xmlns:vm="clr-namespace:homework1.ViewModels">
+    <Design.DataContext>
+        <vm:ResultViewModel/>
+    </Design.DataContext>
+    <StackPanel HorizontalAlignment="Center" Spacing="20">
+        <TextBlock HorizontalAlignment="Center" Text="喜报" FontSize="60"/>
+        <TextBlock HorizontalAlignment="Center" Text="{Binding Path=Result}" FontSize="48"/>
+        <Button HorizontalAlignment="Center" Content="重来" FontSize="36" Command="{Binding Path=RemakeCommand}"/>
+    </StackPanel>
+</UserControl>
