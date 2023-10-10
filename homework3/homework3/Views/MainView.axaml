@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:homework3.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="homework3.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+    
+    <ScrollViewer>
+    <StackPanel>
+        <TextBlock Text="C# 代码行数及字数统计" TextAlignment="Center" FontSize="42"/>
+        <TextBox IsEnabled="False" Text="{Binding Path=FileRoute}" Margin="20, 5"/>
+        <Button HorizontalAlignment="Center" Command="{Binding Path=SelectFileCommand}" Content="选择文件" FontSize="20" />
+		<Grid Margin="20">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<TextBlock Grid.Row="0" Grid.Column="0" FontSize="24" Text="去除注释及空行前" HorizontalAlignment="Center"/>
+			<TextBlock Grid.Row="0" Grid.Column="1" FontSize="24" Text="去除注释及空行后" HorizontalAlignment="Center"/>
+			<TextBlock Grid.Row="1" Grid.Column="0" FontSize="20" Text="{Binding Path=OriginLineCount}" HorizontalAlignment="Center" TextAlignment="Center"/>
+			<TextBlock Grid.Row="1" Grid.Column="1" FontSize="20" Text="{Binding Path=LineCount}" HorizontalAlignment="Center" TextAlignment="Center"/>
+			<Grid.Resources>
+				<DataTemplate x:Key="DataTemplate">
+					<DockPanel LastChildFill="False">
+						<TextBlock DockPanel.Dock="Left" Text="{Binding Path=Word}"/>
+						<TextBlock DockPanel.Dock="Right" Text="{Binding Path=Count}"/>
+					</DockPanel>
+				</DataTemplate>
+			</Grid.Resources>
+			<ItemsControl Grid.Row="2" Grid.Column="0" Margin="40, 10" ItemTemplate="{StaticResource DataTemplate}" ItemsSource="{Binding Path=OriginWordCount}"/>
+			<ItemsControl Margin="40, 10" ItemTemplate="{StaticResource DataTemplate}" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Path=WordCount}"/>
+		</Grid>
+    </StackPanel>
+    </ScrollViewer>
+</UserControl>
