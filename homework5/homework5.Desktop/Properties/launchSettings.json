@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "homework5.Desktop": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "BING_SEARCH_V7_SUBSCRIPTION_KEY": ""
+      }
+    }
+  }
+}
