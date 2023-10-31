@@ -1,0 +1,94 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:homework6.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="homework6.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+			<ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Text="{Binding Path=Log}"/>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <ListBox Grid.Row="0" SelectionMode="Single" SelectedItems="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=ListItems}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Panel>
+                            <TextBlock Text="{Binding}"/>
+                        </Panel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TabControl Grid.Row="1">
+                <TabItem Header="School">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                            <TextBlock Text="名称：" VerticalAlignment="Center"/>
+                            <TextBox Text="{Binding Path=SchoolName}"/>
+                            <TextBlock Text="地址" VerticalAlignment="Center"/>
+                            <TextBox Text="{Binding Path=SchoolAddress}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                            <Button Content="添加" Command="{Binding Path=AddSchoolCommand}" Padding="15, 5"/>
+                            <Button Content="删除" Command="{Binding Path=DeleteCommand}" Padding="15, 5"/>
+                            <Button Content="更新" Command="{Binding Path=UpdateSchoolCommand}" Padding="15, 5"/>
+                            <Button Content="刷新" Command="{Binding Path=GetAllSchoolsCommand}" Padding="15, 5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Class">
+                    <StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+						<TextBlock Text="名称：" VerticalAlignment="Center"/>
+						<TextBox Text="{Binding Path=ClassName}"/>
+						<TextBlock Text="专业：" VerticalAlignment="Center"/>
+						<TextBox Text="{Binding Path=ClassMajor}"/>
+                        <TextBlock Text="所属学校名：" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding Path=ClassSchoolName}"/>
+                    </StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                            <Button Content="添加" Command="{Binding Path=AddClassCommand}" Padding="15, 5"/>
+                            <Button Content="删除" Command="{Binding Path=DeleteCommand}" Padding="15, 5"/>
+                            <Button Content="更新" Command="{Binding Path=UpdateClassCommand}" Padding="15, 5"/>
+                            <Button Content="刷新" Command="{Binding Path=GetAllClassesCommand}" Padding="15, 5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Student">
+                    <StackPanel>
+                    <StackPanel Spacing="10" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="学号：" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding Path=StudentId}"/>
+                        <TextBlock Text="姓名" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding Path=StudentName}"/>
+                        <TextBlock Text="所属班级：" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding Path=StudentClassName}"/>
+                        <TextBlock Text="所属学校" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding Path=StudentSchoolName}"/>
+                    </StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                            <Button Content="添加" Command="{Binding Path=AddStudentCommand}" Padding="15, 5"/>
+                            <Button Content="删除" Command="{Binding Path=DeleteCommand}" Padding="15, 5"/>
+                            <Button Content="更新" Command="{Binding Path=UpdateStudentCommand}" Padding="15, 5"/>
+                            <Button Content="刷新" Command="{Binding Path=GetAllStudentsCommand}" Padding="15, 5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</UserControl>
