@@ -1,0 +1,6 @@
+[submodule "EverythingHouse"]
+	path = EverythingHouse
+	url = https://github.com/RemeaMiku/YorozuyaWpfApp.git
+[submodule "YorozuyaServer"]
+	path = YorozuyaServer
+	url = https://github.com/Linorman/YorozuyaServer.git
